@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&display=swap');
-        .font-serif-title { font-family: 'Cinzel', Georgia, serif; }
-        .font-signature { font-family: 'Great Vibes', cursive; }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen flex flex-col text-slate-800">
@@ -154,55 +151,12 @@
                 </div>
             </div>
 
-            <!-- EMBEDDED CERTIFICATE DOCUMENT (Matches Issued Document) -->
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-300 p-6 md:p-10 relative text-slate-900 mt-6">
-                
-                <!-- Header Info -->
-                <div class="text-center border-b-2 border-slate-800 pb-4 mb-6">
-                    <h2 class="text-2xl font-bold text-blue-700 tracking-wide">Kanha & Company</h2>
-                    <p class="text-xs font-semibold text-slate-800 mt-1">Manufacturer & Supplier (GSTIN : 08AIBPA4712A1Z6)</p>
-                    <div class="flex flex-col sm:flex-row justify-between text-[11px] text-slate-600 mt-3 pt-2 border-t border-slate-200 gap-1">
-                        <span><strong>Office :</strong> 17, Dholi Bawari ,Udaipur (Raj.) | <strong>Factory :</strong> G-162, RIICO ,Gudli Udaipur (Raj.)</span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row justify-between text-[11px] text-slate-600 mt-1 gap-1">
-                        <span><strong>Email :</strong> <a href="https://www.kanhaandcompany.com" class="text-blue-600 underline">https://www.kanhaandcompany.com</a></span>
-                        <span><strong>Mob :</strong> 9829057527, 8290894810</span>
-                    </div>
+            <!-- CERTIFICATE DISPLAY AT THE VERY BOTTOM -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-300 p-2 sm:p-4 mt-6">
+                <div class="bg-slate-800 text-white px-3 py-2 text-xs font-bold rounded-t-xl mb-3 flex items-center justify-between">
+                    <span><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> Official Document Preview</span>
                 </div>
-
-                <!-- Title & Meta -->
-                <div class="text-center my-6">
-                    <h1 class="text-xl md:text-2xl font-bold uppercase tracking-wider text-slate-900">
-                        CERTIFICATE OF INTERNSHIP
-                    </h1>
-                </div>
-
-                <div class="flex justify-between text-xs text-slate-700 mb-6 font-medium">
-                    <span><strong>Date:</strong> <span id="certIssueDate"></span></span>
-                    <span><strong>Student Reg. No:</strong> <span id="certRegNo" class="font-bold text-slate-900"></span></span>
-                </div>
-
-                <!-- Certificate Body Text -->
-                <div class="space-y-4 text-xs md:text-sm text-slate-800 leading-relaxed text-justify my-6">
-                    <p>
-                        This is to certify that <strong id="certName" class="text-slate-900"></strong> D/o <strong id="certFatherName" class="text-slate-900"></strong> a student of <strong id="certCourse" class="text-slate-900"></strong> Roll No. <strong id="certRollNo" class="text-slate-900"></strong> at <strong id="certCollege" class="text-slate-900"></strong> has successfully completed her internship in <strong id="certDomain" class="text-blue-700"></strong> at <strong>Kanha & Company</strong> from <strong id="certDuration" class="text-slate-900"></strong> (<strong id="certHours" class="text-slate-900"></strong>).
-                    </p>
-                    <p id="certEvaluation" class="text-slate-700">
-                        During her tenure as a Data Analytics Intern, Vrinda Yadav demonstrated exceptional technical competence, data analytical skills, and proactive engagement with real-world business datasets. She successfully executed assigned analytical tasks, maintained strong attention to accuracy, and consistently met project milestones within tight deadlines.
-                    </p>
-                    <p>
-                        We wish her all the best for her future endeavors.
-                    </p>
-                </div>
-
-                <!-- Signatory Block -->
-                <div class="pt-12 mt-8 flex justify-end text-right">
-                    <div class="inline-block text-center min-w-[140px]">
-                        <p id="certSignatory" class="font-bold text-xs text-slate-900"></p>
-                        <p id="certDesignation" class="text-[11px] text-slate-600 mt-0.5">(CEO)</p>
-                    </div>
-                </div>
-
+                <img id="certImageDisplay" src="" alt="Official Internship Certificate" class="w-full h-auto rounded-xl border border-slate-200 shadow-sm">
             </div>
 
             <!-- Action Button -->
@@ -228,10 +182,7 @@
                 hours: "Total 120 Hours",
                 duration: "1st November 2026 to 30th December 2026",
                 domain: "Data Analytics (Online Mode)",
-                issueDate: "11/01/2027",
-                signatory: "Deepak Ahir",
-                designation: "(CEO)",
-                evaluation: "During her tenure as a Data Analytics Intern, Vrinda Yadav demonstrated exceptional technical competence, data analytical skills, and proactive engagement with real-world business datasets. She successfully executed assigned analytical tasks, maintained strong attention to accuracy, and consistently met project milestones within tight deadlines."
+                certImage: "certificate.jpg"
             }
         ];
 
@@ -259,20 +210,8 @@
                 document.getElementById('resDuration').innerText = match.duration;
                 document.getElementById('resDomain').innerText = match.domain;
 
-                // Populate Attached Official Certificate Details
-                document.getElementById('certRegNo').innerText = match.regNo;
-                document.getElementById('certIssueDate').innerText = match.issueDate;
-                document.getElementById('certName').innerText = match.name;
-                document.getElementById('certFatherName').innerText = match.fatherName;
-                document.getElementById('certCourse').innerText = match.course;
-                document.getElementById('certRollNo').innerText = match.rollNo;
-                document.getElementById('certCollege').innerText = match.college;
-                document.getElementById('certHours').innerText = match.hours;
-                document.getElementById('certDuration').innerText = match.duration;
-                document.getElementById('certDomain').innerText = match.domain;
-                document.getElementById('certEvaluation').innerText = match.evaluation;
-                document.getElementById('certSignatory').innerText = match.signatory;
-                document.getElementById('certDesignation').innerText = match.designation;
+                // Set image source to certificate.jpg
+                document.getElementById('certImageDisplay').src = match.certImage;
 
                 document.getElementById('searchCard').classList.add('hidden');
                 document.getElementById('resultCard').classList.remove('hidden');
